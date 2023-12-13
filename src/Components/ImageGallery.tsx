@@ -8,9 +8,11 @@ import { SearchQuery, SimilarSearchQuery } from '../Services/SearchQuery';
 export function ImageGallery({
   searchResult,
   onSimilarSearch,
+  currentTab
 }: {
   searchResult: SearchResult[];
   onSimilarSearch?: (query: SearchQuery) => void;
+  currentTab: number;
 }) {
   const containerRef = useRef(null);
   searchResult.forEach(t => {
@@ -42,11 +44,12 @@ export function ImageGallery({
           similar: {
             tpl: `<button class="f-button">Similar Search</button>`,
             click: () => {
+              console.log(11)
               const index = Fancybox.getInstance()?.getSlide()?.index ?? -1;
               if (index == -1) return;
               onSimilarSearch?.(
-                new SimilarSearchQuery(searchResult[index].img.id)
-              );
+                new SimilarSearchQuery(searchResult[index].img.id, currentTab===0?"image_vector":"text_contain_vector"
+              ));
             },
           },
         },

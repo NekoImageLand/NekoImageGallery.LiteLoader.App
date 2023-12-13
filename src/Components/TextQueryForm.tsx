@@ -16,7 +16,7 @@ export function TextQueryForm({
 
   const handleTextSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSubmit?.(new TextSearchQuery(textPrompt));
+    onSubmit?.(new TextSearchQuery(textPrompt, "image_vector"));
   };
 
   return (

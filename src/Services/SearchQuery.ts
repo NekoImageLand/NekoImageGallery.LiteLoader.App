@@ -7,13 +7,13 @@ export abstract class SearchQuery {
 }
 
 export class TextSearchQuery extends SearchQuery {
-  constructor(public query: string) {
+  constructor(public query: string, public imageVector: string) {
     super();
   }
 
   async querySearch(count = 20): Promise<SearchApiResponse> {
     const response = await getClient().get<SearchApiResponse>(
-      `/search/text/${encodeURIComponent(this.query)}?count=${count}`
+      `/search/text/${encodeURIComponent(this.query)}?count=${count}&vectorName=${this.imageVector}`
     );
     return response.data;
   }
@@ -44,13 +44,13 @@ export class ImageSearchQuery extends SearchQuery {
 }
 
 export class SimilarSearchQuery extends SearchQuery {
-  constructor(public id: string) {
+  constructor(public id: string, public vectorName: string) {
     super();
   }
 
   async querySearch(count = 20): Promise<SearchApiResponse> {
     const response = await getClient().get<SearchApiResponse>(
-      `/search/similar/${encodeURIComponent(this.id)}?count=${count}`
+      `/search/similar/${encodeURIComponent(this.id)}?count=${count}&vectorName=${this.vectorName}`
     );
     return response.data;
   }
