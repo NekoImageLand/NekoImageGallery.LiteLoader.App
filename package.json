@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "plugin-build": "tsc && vite build && electron-vite build",
+    "local-plugin-build": "tsc && vite build && electron-vite build && cp -r LiteLoaderQQNT-NekoImageR C:/etc/LiteLoaderQQNT/plugins",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 && prettier --check .",
     "preview": "vite preview",
     "format": "prettier -cw ."
@@ -30,14 +32,19 @@
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
     "@vitejs/plugin-react-swc": "^3.7.0",
+    "electron": "^31.2.0",
+    "electron-vite": "^2.3.0",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.8",
+    "liteloaderqqnt-types": "^1.0.1",
     "prettier": "^3.3.2",
     "typescript": "^5.5.3",
     "vite": "^5.3.3",
+    "vite-plugin-cp": "^4.0.8",
     "vite-plugin-pwa": "^0.20.0",
+    "vite-plugin-singlefile": "^2.0.2",
     "workbox-build": "^7.1.1",
     "workbox-window": "^7.1.0"
   }
